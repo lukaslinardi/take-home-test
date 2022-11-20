@@ -1,0 +1,58 @@
+.login-welcome-text {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  bottom: 50%;
+  right: 50%;
+  min-height: 100px;
+}
+
+.login-text {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  min-height: 100px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.p {
+  font-family: "Monaco", monospace;
+  font-weight: bold;
+  min-height: 100px;
+}
+
+.login-form {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  text-align: start;
+}
+
+.login-object {
+  display: grid;
+  grid-template-columns: 15%;
+  justify-content: center;
+}
+
+.login-button {
+  border-radius: 4px;
+  border: none;
+  padding: 10px;
+  background-color: #5f82ff;
+}
+
+.login-button:hover {
+  background-color: #5f70ff;
+}
+
+.label {
+  font-family: "Monaco", monospace;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
