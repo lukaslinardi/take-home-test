@@ -11,7 +11,7 @@
   width: 100%;
   min-height: 100px;
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .p {
@@ -39,6 +39,7 @@
   border: none;
   padding: 10px;
   background-color: #5f82ff;
+  font-weight: bold;
 }
 
 .login-button:hover {
@@ -51,11 +52,23 @@
 }
 
 .error-label {
-  margin: 5px;
+  margin: 0;
+  color: #ff000e;
+}
+
+.column {
+  display: flex;
+  font-size: 15px;
+}
+
+.nav-link {
+  color: #eb720f;
+  font-weight: bold;
+  margin: auto;
 }
 
 input[type="text"] {
   padding: 12px 20px;
-  margin: 3px;
+  margin: 6px;
   box-sizing: border-box;
 }

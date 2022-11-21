@@ -19,8 +19,6 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
-  const [] = useState();
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -61,7 +59,6 @@ const Login = () => {
             type="text"
             id="fname"
             name="firstname"
-            placeholder="Your name.."
             onChange={(e) => formik.setFieldValue("email", e.target.value)}
           />
           {formik.touched.email && formik.errors.email ? (
@@ -74,15 +71,31 @@ const Login = () => {
             type="text"
             id="lname"
             name="lastname"
-            placeholder="Your last name.."
             onChange={(e) => formik.setFieldValue("email", e.target.value)}
           />
           {formik.touched.password && formik.errors.password ? (
             <p className="error-label">{formik.errors.password}</p>
           ) : null}
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex" }}>
+              <input type="checkbox" />
+              <p>Ingat saya</p>
+            </div>
+            <div style={{ display: "flex" }}>
+              <a href="default.asp" target="_blank" className="nav-link">
+                Lupa Password?
+              </a>
+            </div>
+          </div>
           <button type="submit" className="login-button">
-            masuk
+            Masuk
           </button>
+          <div className="column">
+            <p>Belum Registrasi? Silahkan klik&nbsp;</p>
+            <a href="default.asp" target="_blank" className="nav-link">
+              Daftar
+            </a>
+          </div>
         </div>
       </form>
     </div>
