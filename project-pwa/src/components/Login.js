@@ -25,8 +25,7 @@ const Login = () => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: () => {
-    },
+    onSubmit: () => {},
   });
 
   return (
@@ -78,7 +77,7 @@ const Login = () => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ display: "flex" }}>
               <input type="checkbox" />
-              <p style={{fontSize: 'small'}}>Ingat saya</p>
+              <p style={{ fontSize: "small" }}>Ingat saya</p>
             </div>
             <div style={{ display: "flex" }}>
               <a href="default.asp" target="_blank" className="nav-link">
@@ -90,8 +89,10 @@ const Login = () => {
             Masuk
           </button>
           <div className="column">
-            <p style={{fontSize: 'small'}}>Belum Registrasi? Silahkan klik&nbsp;</p>
-            <Link to='/facility' className="nav-link">
+            <p style={{ fontSize: "small" }}>
+              Belum Registrasi? Silahkan klik&nbsp;
+            </p>
+            <Link to="/facility" className="nav-link">
               Daftar
             </Link>
           </div>

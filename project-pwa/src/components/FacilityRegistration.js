@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -8,7 +8,7 @@ import {
   LocationOn as LocationOnIcon,
   Task as TaskIcon,
 } from "@mui/icons-material";
-import "../components/Register.css";
+import "../components/FacilityRegistration.css";
 import backgroundImage from "../assets/register.jpeg";
 
 const validationSchema = yup.object({
@@ -31,7 +31,7 @@ const FacilityRegistration = () => {
     },
     validationSchema: validationSchema,
     onSubmit: () => {
-      navigate("/");
+      navigate("/register");
     },
   });
 
@@ -88,7 +88,7 @@ const FacilityRegistration = () => {
         </Fab>
         <p>Pendaftaran Sarana</p>
       </div>
-      <div className="vertical-line"></div>
+      <div className="facility-vertical-line"></div>
       <div
         style={{
           position: "absolute",
@@ -103,10 +103,10 @@ const FacilityRegistration = () => {
         </Fab>
         Register
       </div>
-      <div className="register-box">
+      <div className="facility-register-box">
         <h3>Input data perusahaan</h3>
         <form onSubmit={formik.handleSubmit}>
-          <div className="grid-object">
+          <div className="facility-grid-object">
             <select
               id="entre"
               name="bidang usaha"
@@ -126,10 +126,11 @@ const FacilityRegistration = () => {
               id="company"
               placeholder="Nama Perusahaan"
               name="Perusahaan"
-              className="textfield"
+              className="facility-textfield"
               onChange={(e) =>
                 formik.setFieldValue("companyName", e.target.value)
               }
+              value={formik.values.companyName}
             />
             {formik.touched.companyName && formik.errors.companyName ? (
               <p className="error-label">{formik.errors.companyName}</p>
@@ -139,10 +140,11 @@ const FacilityRegistration = () => {
               id="tax"
               placeholder="NPWP Perusahaan"
               name="Tax"
-              className="textfield"
+              className="facility-textfield"
               onChange={(e) =>
                 formik.setFieldValue("companyTax", e.target.value)
               }
+              value={formik.values.companyTax}
             />
             {formik.touched.companyTax && formik.errors.companyTax ? (
               <p className="error-label">{formik.errors.companyTax}</p>
@@ -152,10 +154,11 @@ const FacilityRegistration = () => {
               id="tax-address"
               placeholder="Alamat Sesuai NPWP"
               name="Tax-Addresss"
-              className="textfield"
+              className="facility-textfield"
               onChange={(e) =>
                 formik.setFieldValue("addressTax", e.target.value)
               }
+              value={formik.values.addressTax}
             />
             {formik.touched.addressTax && formik.errors.addressTax ? (
               <p className="error-label">{formik.errors.addressTax}</p>
@@ -192,8 +195,9 @@ const FacilityRegistration = () => {
               id="code-post"
               placeholder="Kode Pos"
               name="Code-Post"
-              className="textfield"
+              className="facility-textfield"
               onChange={(e) => formik.setFieldValue("postCode", e.target.value)}
+              value={formik.values.postCode}
             />
             {formik.touched.postCode && formik.errors.postCode ? (
               <p className="error-label">Post code only accept number value</p>
@@ -224,7 +228,7 @@ const FacilityRegistration = () => {
               onDrop={handleDrop}
             ></div>
           )}
-          <button type="submit" className="register-button">
+          <button type="submit" className="facility-register-button">
             Selanjutnya
           </button>
         </form>
