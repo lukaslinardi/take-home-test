@@ -1,5 +1,5 @@
 import Login from "./components/Login";
-
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import logo from "./logo.svg";
 
 import "./App.css";
@@ -24,7 +24,11 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Login/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

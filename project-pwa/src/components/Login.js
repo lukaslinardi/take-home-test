@@ -53,7 +53,7 @@ const Login = () => {
         </p>
       </div>
       <form className="login-form" onSubmit={formik.handleSubmit}>
-        <div class="login-object">
+        <div className="login-object">
           <label for="fname" className="label">
             E-mail
           </label>
@@ -64,6 +64,9 @@ const Login = () => {
             placeholder="Your name.."
             onChange={(e) => formik.setFieldValue("email", e.target.value)}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <p className="error-label">{formik.errors.email}</p>
+          ) : null}
           <label for="lname" className="label">
             Password
           </label>
@@ -74,6 +77,9 @@ const Login = () => {
             placeholder="Your last name.."
             onChange={(e) => formik.setFieldValue("email", e.target.value)}
           />
+          {formik.touched.password && formik.errors.password ? (
+            <p className="error-label">{formik.errors.password}</p>
+          ) : null}
           <button type="submit" className="login-button">
             masuk
           </button>
