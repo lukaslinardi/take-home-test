@@ -1,10 +1,7 @@
-import Login from "./components/Login";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import logo from "./logo.svg";
 
-import "./App.css";
-
-import backgroundImage from "./assets/drug.jpeg";
+import Login from "./components/Login";
+import FacilityRegistration from "./components/FacilityRegistration";
 
 function App() {
   return (
@@ -26,7 +23,10 @@ function App() {
     // </div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} />drug
+      </Routes>
+      <Routes>
+        <Route path="/facility" element={<FacilityRegistration />} />
       </Routes>
     </BrowserRouter>
   );

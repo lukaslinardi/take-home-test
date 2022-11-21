@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import backgroundImage from "../assets/drug.jpeg";
+import backgroundImage from "../assets/login.jpeg";
 import "./Login.css";
 
 const validationSchema = yup.object({
@@ -26,7 +26,6 @@ const Login = () => {
     },
     validationSchema: validationSchema,
     onSubmit: () => {
-      console.log("submitted!");
     },
   });
 
@@ -79,7 +78,7 @@ const Login = () => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ display: "flex" }}>
               <input type="checkbox" />
-              <p>Ingat saya</p>
+              <p style={{fontSize: 'small'}}>Ingat saya</p>
             </div>
             <div style={{ display: "flex" }}>
               <a href="default.asp" target="_blank" className="nav-link">
@@ -91,10 +90,10 @@ const Login = () => {
             Masuk
           </button>
           <div className="column">
-            <p>Belum Registrasi? Silahkan klik&nbsp;</p>
-            <a href="default.asp" target="_blank" className="nav-link">
+            <p style={{fontSize: 'small'}}>Belum Registrasi? Silahkan klik&nbsp;</p>
+            <Link to='/facility' className="nav-link">
               Daftar
-            </a>
+            </Link>
           </div>
         </div>
       </form>
