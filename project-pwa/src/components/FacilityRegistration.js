@@ -7,14 +7,21 @@ import {
   Backup as BackupIcon,
   LocationOn as LocationOnIcon,
   Task as TaskIcon,
+  AddTask as AddTaskIcon,
+  HelpOutline as HelpOutlineIcon,
 } from "@mui/icons-material";
+
 import "../components/FacilityRegistration.css";
 import backgroundImage from "../assets/register.jpeg";
 
 const validationSchema = yup.object({
+  businessFields: yup.string().required("Business field is required"),
   companyName: yup.string().required("Company name is required"),
   companyTax: yup.string().required("Company tax is required"),
   addressTax: yup.string().required("Address tax is required"),
+  provence: yup.string().required("Provence is required"),
+  city: yup.string().required("City is required"),
+  district: yup.string().required("District is required"),
   postCode: yup.number().required(),
 });
 
@@ -27,6 +34,10 @@ const FacilityRegistration = () => {
       businessFields: "",
       companyName: "",
       companyTax: "",
+      addressTax: "",
+      provence: "",
+      city: "",
+      district: "",
       postCode: null,
     },
     validationSchema: validationSchema,
@@ -76,8 +87,24 @@ const FacilityRegistration = () => {
     >
       <div
         style={{
+          width: "100%",
+          height: "50px",
+          display: "flex",
+          backgroundColor: "white",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <AddTaskIcon fontSize="large" sx={{ color: "#00c557" }} />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <HelpOutlineIcon fontSize="large" sx={{ color: 'gray' }}/>
+          <p style={{ marginRight: "10px", color: "gray" }}>Pusat Bantuan</p>
+        </div>
+      </div>
+      <div
+        style={{
           position: "absolute",
-          top: "5%",
+          top: "10%",
           left: "5%",
           display: "flex",
           alignItems: "center",
@@ -92,7 +119,7 @@ const FacilityRegistration = () => {
       <div
         style={{
           position: "absolute",
-          top: "15%",
+          top: "20%",
           left: "5%",
           display: "flex",
           alignItems: "center",
@@ -111,7 +138,14 @@ const FacilityRegistration = () => {
               id="entre"
               name="bidang usaha"
               placeholder="bidang usaha"
-              required
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  formik.setFieldValue("businessFields", "");
+                } else {
+                  formik.setFieldValue("businessFields", e.target.value);
+                }
+              }}
+              value={formik.values.businessFields}
             >
               <option value="" disabled selected hidden>
                 Bidang Usaha
@@ -121,6 +155,9 @@ const FacilityRegistration = () => {
               <option value="software">Software</option>
               <option value="kimia">Kimia</option>
             </select>
+            {formik.touched.businessFields && formik.errors.businessFields ? (
+              <p className="error-label">{formik.errors.businessFields}</p>
+            ) : null}
             <input
               type="text"
               id="company"
@@ -163,7 +200,18 @@ const FacilityRegistration = () => {
             {formik.touched.addressTax && formik.errors.addressTax ? (
               <p className="error-label">{formik.errors.addressTax}</p>
             ) : null}
-            <select id="provence" name="provence" required>
+            <select
+              id="provence"
+              name="provence"
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  formik.setFieldValue("provence", "");
+                } else {
+                  formik.setFieldValue("provence", e.target.value);
+                }
+              }}
+              value={formik.values.provence}
+            >
               <option value="" disabled selected hidden>
                 Provinsi
               </option>
@@ -172,7 +220,21 @@ const FacilityRegistration = () => {
               <option value="jawa timur">Jawa Timur</option>
               <option value="bali">Bali</option>
             </select>
-            <select id="city" name="City" required>
+            {formik.touched.provence && formik.errors.provence ? (
+              <p className="error-label">{formik.errors.provence}</p>
+            ) : null}
+            <select
+              id="city"
+              name="City"
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  formik.setFieldValue("city", "");
+                } else {
+                  formik.setFieldValue("city", e.target.value);
+                }
+              }}
+              value={formik.values.city}
+            >
               <option value="" disabled selected hidden>
                 Kota / Kabupaten
               </option>
@@ -181,7 +243,21 @@ const FacilityRegistration = () => {
               <option value="bandung">Bandung</option>
               <option value="malang">Malang</option>
             </select>
-            <select id="district" name="District" required>
+            {formik.touched.city && formik.errors.city ? (
+              <p className="error-label">{formik.errors.city}</p>
+            ) : null}
+            <select
+              id="district"
+              name="District"
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  formik.setFieldValue("district", "");
+                } else {
+                  formik.setFieldValue("district", e.target.value);
+                }
+              }}
+              value={formik.values.district}
+            >
               <option value="" disabled selected hidden>
                 Kecamatan
               </option>
@@ -190,6 +266,9 @@ const FacilityRegistration = () => {
               <option value="batutulis">Batutulis</option>
               <option value="empang">Empang</option>
             </select>
+            {formik.touched.district && formik.errors.district ? (
+              <p className="error-label">{formik.errors.district}</p>
+            ) : null}
             <input
               type="text"
               id="code-post"

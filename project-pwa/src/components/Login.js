@@ -3,7 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
+import {
+  AddTask as AddTaskIcon,
+  HelpOutline as HelpOutlineIcon,
+} from "@mui/icons-material";
+
 import backgroundImage from "../assets/login.jpeg";
+import olinLogo from "../assets/olin.jpeg";
 import "./Login.css";
 
 const validationSchema = yup.object({
@@ -19,13 +25,16 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: () => {},
+    onSubmit: () => {
+      navigate("/dashboard");
+    },
   });
 
   return (
@@ -39,6 +48,21 @@ const Login = () => {
         backgroundSize: "cover",
       }}
     >
+      <div
+        style={{
+          width: "100%",
+          height: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <AddTaskIcon fontSize="large" sx={{ color: "#00c557" }} />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <HelpOutlineIcon fontSize="large" sx={{ color: "gray" }} />
+          <p style={{ marginRight: "10px", color: "gray" }}>Pusat Bantuan</p>
+        </div>
+      </div>
       <div className="login-welcome-text">
         <h1>Selamat Datang di Solusi Perangkat Lunak Farmasi</h1>
         <h3>Sistem Manajemen Apotek Online</h3>
@@ -69,7 +93,7 @@ const Login = () => {
             type="text"
             id="lname"
             name="lastname"
-            onChange={(e) => formik.setFieldValue("email", e.target.value)}
+            onChange={(e) => formik.setFieldValue("password", e.target.value)}
           />
           {formik.touched.password && formik.errors.password ? (
             <p className="error-label">{formik.errors.password}</p>

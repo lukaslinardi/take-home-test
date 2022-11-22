@@ -1,7 +1,7 @@
 .facility-register-box {
   position: absolute;
   left: 70%;
-  top: 5%;
+  top: 8%;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -129,7 +129,7 @@ input[type="text"] {
 
 .facility-vertical-line {
   position: absolute;
-  top: 10%;
+  top: 13%;
   left: 6.3%;
   border-left: 3px solid grey;
   height: 50px;

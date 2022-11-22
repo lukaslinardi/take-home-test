@@ -6,6 +6,8 @@ import { Fab } from "@mui/material";
 import {
   LocationOn as LocationOnIcon,
   Task as TaskIcon,
+  AddTask as AddTaskIcon,
+  HelpOutline as HelpOutlineIcon,
 } from "@mui/icons-material";
 
 import "../components/Register.css";
@@ -23,8 +25,8 @@ const validationSchema = yup.object({
     .min(5, "the minimum password is 5 character long"),
   confirmPassword: yup
     .string()
-    .required("Please confirm your new password")
-    .oneOf([yup.ref("newPassword"), null], "Password must match"),
+    .required("Please confirm your password")
+    .oneOf([yup.ref("password"), null], "Password must match"),
 });
 
 const Register = () => {
@@ -53,8 +55,24 @@ const Register = () => {
     >
       <div
         style={{
+          width: "100%",
+          height: "50px",
+          display: "flex",
+          backgroundColor: "white",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <AddTaskIcon fontSize="large" sx={{ color: "#00c557" }} />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <HelpOutlineIcon fontSize="large" sx={{ color: "gray" }} />
+          <p style={{ marginRight: "10px", color: "gray" }}>Pusat Bantuan</p>
+        </div>
+      </div>
+      <div
+        style={{
           position: "absolute",
-          top: "5%",
+          top: "10%",
           left: "5%",
           display: "flex",
           alignItems: "center",
@@ -69,7 +87,7 @@ const Register = () => {
       <div
         style={{
           position: "absolute",
-          top: "15%",
+          top: "20%",
           left: "5%",
           display: "flex",
           alignItems: "center",
@@ -82,7 +100,7 @@ const Register = () => {
       </div>
       <div className="register-box">
         <h3>Register Akun OLIN</h3>
-        <form>
+        <form onSubmit={formik.handleSubmit} autoComplete="off">
           <div className="grid-object">
             <input
               type="text"
@@ -90,24 +108,52 @@ const Register = () => {
               placeholder="Email"
               name="Email"
               className="textfield"
+              onChange={(e) => formik.setFieldValue("email", e.target.value)}
             />
+            {formik.touched.email && formik.errors.email ? (
+              <p className="error-label">{formik.errors.email}</p>
+            ) : null}
+
             <input
-              type="text"
+              type="password"
               id="password"
               placeholder="Kata Sandi"
-              name="Passwordj"
+              name="Password"
               className="textfield"
+              onChange={(e) => formik.setFieldValue("password", e.target.value)}
             />
+            {formik.touched.password && formik.errors.password ? (
+              <p className="error-label">{formik.errors.password}</p>
+            ) : null}
+
             <input
-              type="text"
+              type="password"
               id="confirm-password"
               placeholder="Konfirmasi Kata Sandi"
               name="confirmPassword"
               className="textfield"
+              onChange={(e) =>
+                formik.setFieldValue("confirmPassword", e.target.value)
+              }
             />
+            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+              <p className="error-label">{formik.errors.confirmPassword}</p>
+            ) : null}
+            <div style={{ display: "flex" }}>
+              <input type="checkbox" />
+              <p style={{ fontSize: "small" }}>
+                Dengan membuat akun, Anda menyetujui Ketentuan Pengunaan dan
+                Pemberitahuan Privasi aplikasi OLIN
+              </p>
+            </div>
           </div>
           <div style={{ display: "flex" }}>
-            <button className="back-button">Kembali</button>
+            <button
+              className="back-button"
+              onClick={() => navigate("/facility")}
+            >
+              Kembali
+            </button>
             <button type="submit" className="register-button">
               Register
             </button>
